@@ -1,9 +1,9 @@
 <?php
 
-$con = mysqli_connect('59.110.55.120', 'bdm256727651', 'hjw123456');
+$con = mysqli_connect('localhost', 'username', 'password');
 if(! $con )
 {
-    die('连接失败: ' . mysqli_error($con));
+    die('杩炴帴澶辫触: ' . mysqli_error($con));
 }
 
 mysqli_select_db($con,'bdm256727651_db');
@@ -15,7 +15,7 @@ if($rows){
    echo "<script>window.location.href='login.html';</script>";
    exit;
 }else{
-       echo "用户名或密码错误";
+       echo "鐢ㄦ埛鍚嶆垨瀵嗙爜閿欒";
        echo "
        <script>
            setTimeout(function(){window.location.href='form.html';},3000);
