@@ -1,0 +1,123 @@
+<!DOCTYPE html>  
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<style>
+*{margin:0;padding:0;}
+li{list-style:none;}
+
+.lb{width:320px;height:130px;position:relative;margin:20px auto;overflow: hidden;}
+.lb .lb_img{width:2240px;height:130px;position:absolute;left:-320px;}
+.lb .lb_img img{width:320px;height:130px;float:left;display:block;}
+.lb ul{width:35px;height:4px;position:absolute;bottom:10px;left:50%;margin-left:-15px;}
+.lb ul li{width:4px;height:4px;border-radius:2px;border:0.25px solid #fff;margin-left:2.5px;background:#666;float:left;cursor:pointer;}
+.lb ul .active{background:#fff;}
+.lb ul li:hover{background:#fff;}
+
+</style>
+</head>
+<body>
+<div class="lb">
+		<div class="lb_img">
+			<img src="img/4.jpg">
+			<img src="img/0.jpg">
+			<img src="img/1.jpg">
+			<img src="img/2.jpg">
+			<img src="img/3.jpg">
+			<img src="img/4.jpg">
+			<img src="img/0.jpg">
+		</div>
+		<ul>
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+</div>	
+<script>
+var lb = document.querySelector(".lb");
+var lb_img = document.querySelector(".lb .lb_img");
+var img = document.querySelectorAll(".lb .lb_img img")
+var lis = document.querySelectorAll(".lb ul li");
+var i=2;
+    // 初始化手指坐标点
+    var startPoint = 0;
+    var startEle = 0;
+    //手指按下
+    lb.addEventListener("touchstart",function(e){
+        startPoint = e.changedTouches[0].pageX;
+        startEle = lb_img.offsetLeft;
+        clearInterval(Time)
+    });
+    
+    //手指滑动
+    lb.addEventListener("touchmove",function(e){
+        var currPoint = e.changedTouches[0].pageX;  
+        var disX = currPoint - startPoint;
+        var left = startEle + disX;
+        lb_img.style.left = left + "px";       
+    });
+
+    //当手指抬起的时候，
+    lb.addEventListener("touchend",function(e){
+    	var currPoint = e.changedTouches[0].pageX;
+    	var disX = - (currPoint - startPoint);
+        var left = startEle + disX;
+        if(disX > 150){
+       		i++;
+	       	for(var q=0;q<lis.length;q++){
+	           lis[q].className = '';   
+	        }
+	        if(i == 7){
+	        	i=2;
+	        }
+	        lis[i-2].className= "active" ;	  	
+        	lb_img.style.left = -320*(Math.round(disX/320)+i+1)+ 'px';      		
+        }else{
+        	lb_img.style.left = -320*(i-1) + "px";
+        }
+
+        if(disX < -150){
+        	i--;
+        	for(var q=0;q<lis.length;q++){
+               lis[q].className = '';
+            }
+            if(i == 1){
+        		i=6;
+        	}
+        	lis[i-2].className= "active" ;     		
+        	lb_img.style.left = -320*(Math.round(-disX/320)+i-2) + 'px';
+	   	
+        }else{
+        	lb_img.style.left = -320*(i-1) + "px";
+        }
+        Time=setInterval(autoplay,2000);
+    })
+//设置定时器
+Time=setInterval(autoplay,2000);
+    function autoplay(){
+    i++;
+    for(var q=0;q<lis.length;q++){
+       lis[q].className = '';   
+    }
+    if(i == 7){
+        i=2;
+    }
+    lis[i-2].className= "active" ;  
+    for(var a=0; a<320;a++){
+            setTimeout(function(){
+                    var left = lb_img.style.left ? lb_img.style.left : "-320px";
+                    left = parseInt(left)-1;
+                    if(left<-1920){
+                        left=-321;
+                    }
+                    lb_img.style.left = left + "px";
+            },a);
+        }
+    }
+
+</script>
+</body>
+</html>
