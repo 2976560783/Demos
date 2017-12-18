@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style type="text/css">
+*{margin:0;padding:0;}
+li{list-style:none;}
+#box{width:500px;height:640px;border:1px solid #ccc;position:relative;top:50%;left:50%;margin:20px -250px;}
+#box .con{width:500px;height:560px;}
+#box .con .item{height:59px;margin:10px 0;border-bottom:1px solid #ccc;display:block;cursor:pointer;}
+#box .con .item img{width:60px;height:50px;float:left;display:block;margin-left:10px;}
+#box .con .item .test{width:400px;height:50px;float:right;}
+#box .con .item .test p{width:300px;font-size:16px;color:#333;text-align:left;display:inline-block;white-space: nowrap;overflow: hidden;text-overflow:ellipsis}
+#box .con .item .test .ft{width:50px;height:50px;line-height:50px;font-size:20px;color:#333;text-decoration:center;display:inline-block;float:right;}
+#box .page{width:500px;height:31px;}
+#box .page ul{height:31px;margin-top:10px;}
+#box .page ul li{width:30px;height:30px;line-height:30px;float:left;margin-left:40px;font-size:24px;border:1px solid #666;text-align:center;cursor:pointer;}
+#box .page ul .active{background:#ccc;}
+</style>
+</head>
+<body>
+<div id="box">
+	<div class="con"></div>
+	<div class="page">
+		<ul>
+			<li class="active">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+		</ul>
+	</div>
+</div>
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	url="https://route.showapi.com/181-1?showapi_appid=30603&showapi_sign=98960666afeb4992ae91971d13494090&page=1&num=8";
+	inteData(url);
+})
+
+function inteData(add){
+	$.ajax({url:add,success:function(myArr){
+		console.log(myArr)
+		var str=""
+		for(var i=0;i<myArr.showapi_res_body.newslist.length;i++){
+			str +=
+			`
+			<a class="item" href="${myArr.showapi_res_body.newslist[i].url}">
+				<img src="http://www.tanzhouphp.com/tanzhoue/images/newsList/${1+(i)}.jpg">
+				<div class="test">
+					<p>${myArr.showapi_res_body.newslist[i].title}</p><div class="ft">&GT;</div>
+				</div>
+			</a>	
+			`
+			}
+			$(".con").html(str)
+					
+		}
+	})
+}	
+
+$("ul li").click(function(){
+	$(this).addClass("active").siblings().removeClass("active")
+	url="https://route.showapi.com/181-1?showapi_appid=30603&showapi_sign=98960666afeb4992ae91971d13494090&page="+$(this).index()+1+"&num=8";
+	inteData(url);
+}); 
+
+   
+</script>
+
+</body>
+</html>
