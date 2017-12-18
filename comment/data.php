@@ -1,5 +1,5 @@
 ﻿<?php  
-$con = mysqli_connect('59.110.55.120', 'bdm256727651', 'hjw123456');
+$con = mysqli_connect('localhost', 'username', 'password');
 if(! $con )
 {
     die('连接失败: ' . mysqli_error($con));
