@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+<style>
+*{margin:0;padding:0;}
+.msg{width:800px;margin:50px auto;}
+table{width:800px;height:200px;border-collapse:collapse;text-align:center;}
+table tr td{width:70px;border:1px solid #999;}
+ul{width:550px;height:20px;margin-top:20px;float:right;}
+ul li{width:50px;height:20px;line-height:20px;text-align:center;float:left;list-style:none;font-size:14px;border:1px solid #999;margin-left:5px;cursor:pointer;}
+ul .jump{width:50px;height:20px;border:0;}
+.text{width:250px;height:20px;line-height:20px;text-align:left;font-size:14px;float:left;margin-top:20px;}
+</style>
+<script>
+var page=1;
+window.onload=function(){
+	getData(page)
+
+function getData(page,totalPage){
+	$.ajax({
+		type: 'POST',
+		url: 'page.php',
+		data: {'page':page},
+		dataType:'json',
+		success:function(data){
+		var totalPage =data[0].totalPage;
+			
+			var pagesize=6;
+			var num=data.length;
+			var str="";
+			for(var i=0;i<num;i++){
+				str+="<tr><td>" + data[i].id +"</td><td>" + data[i].name +"</td><td>" + data[i].mobile + "</td><td>" + data[i].city +"</td><td>" + data[i].type +"</td><td>" + data[i].date + "</td></tr>";
+
+			}
+			var text = "共"+num+"条记录 分"+totalPage+"页 当前第"+page+"页";
+			$(".msg table").html(str);
+			$(".msg .text").html(text);
+			var option=""; 
+			for(var i=1;i<=totalPage;i++){  
+        			option+='<option value='+i+'>'+i+'</option>'  
+   			 }  
+   			 $(".jump").html(option);
+			if(page<1){
+				page=1
+			};
+			if(page>totalPage+1){
+				page=totalPage;
+			}
+		},
+		
+		error:function(){
+            		console.log("数据加载失败");
+       	 }
+
+
+})
+
+return page;
+}
+
+$(".page .nextPage").click(function(){ 
+        	page++;
+	if(page>4){
+		page=4;
+		getData(page)
+	}else{
+		getData(page)
+	}
+        	
+        })
+
+	
+$(".page .firstPage").click(function(){  
+            getData(1);  
+        }) 
+        $(".prePage").click(function(){
+        	page --;
+	if(page<1){
+		page=1;
+		getData(page)
+	}else{
+		getData(page)
+	}
+	
+        	
+        })    
+
+
+
+ 	
+    	$(".lastPage").on("click",function(){  
+            getData(4); 
+        })
+
+	$(".jumpPage").click(function(){
+		var s=parseInt($(".jump").val());
+		if(s!=page){  
+        			getData(s); 
+			
+    		} 
+	})
+
+} 
+
+
+
+</script>
+<body>
+<div class="msg">
+<table>
+	<tr>
+		<td>编号</td>
+		<td>名字</td>
+		<td>电话号码</td>
+		<td>城市</td>
+		<td>种类</td>
+		<td>日期</td>
+	</tr>
+</table>
+<div class="btn-fy">
+	<div class="text"></div>	
+	<ul class="page">
+		<li class="firstPage">第一页</li>
+		<li class="prePage">上一页</li>
+		<li class="nextPage">下一页</li>
+		<li class="lastPage">尾页</li>
+		<li><select class="jump"></select></li> 
+		<li class="jumpPage">跳转</li>
+	</ul>
+</div>
+</msg>
+
+
+</body>
+</html>
