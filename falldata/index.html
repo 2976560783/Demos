@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>瀑布流展示数据</title>
+<style type="text/css">
+*{padding:0;margin:0;}
+body{padding:0;margin:0;background:#ddd;}
+img{border:none;}
+a{text-decoration:none;color:#444;}
+a:hover{color:#999;}
+#title{width:600px;margin:20px auto;text-align:center;}
+
+#wrap{width:auto;height:auto;margin:0 auto;position:relative;}
+#wrap .box{width:280px;height:auto;padding:10px;border:none;float:left;}
+#wrap .box .info{width:280px;height:auto;border-radius:8px;box-shadow:0 0 11px #666;background:#fff;}
+#wrap .box .info .pic{width:260px;height:auto;margin:0 auto;padding-top:10px;}
+#wrap .box .info .pic img{width:260px;border-radius:3px;}
+#wrap .box .info .title{width:260px;height:30px;margin:0 auto;line-height:40px;text-align:center;color:#666;font-size:12px;font-weight:bold;overflow:hidden;display:block;white-space:nowrap;text-overflow:ellipsis}
+#wrap .box .info .sale{width:250px;height:30px;line-height:30px;margin:10px auto 0;padding-bottom:10px;}
+#wrap .box .info .sale label{display:inline-block;font-weight:bold;font-size:14px;margin-left:10px;}
+#wrap .box .info .sale span{font-size:14px;color:#ff0036;}
+#wrap .box .info .sale button{width:60px;height:25px;line-height:20px;font-size:12px;background:#ff0036;color:#fff;border-radius:5px;display:inline-block;float:right;margin-top:5px;outline:none;cursor:pointer;}
+</style>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="index.js"></script>
+
+</head>
+<body>
+<center>
+	<h2>瀑布流展示数据</h2>
+</center>
+
+	<div id="wrap">
+	
+		<div class="box">
+			<div class="info">
+				<div class="pic"><img src="http://img02.taobaocdn.com/bao/uploaded/i2/T1UQTWXjlhXXa0TSA._083409.jpg_b.jpg"></div>
+				<div class="title"><a href="#">新货 核桃 新疆大核桃 阿克苏薄皮核桃 仁很饱满【巴扎20度C】</a></div>
+				<div class="sale"><label>价格：</label><span>5/kg</span><label>库存：</label><span>9999</span><button>购买</button></div>
+			</div>
+		</div>
+		
+		<div class="box">
+			<div class="info">
+				<div class="pic"><img src="http://img03.taobaocdn.com/bao/uploaded/i3/T1XLbSXkFfXXaWt5AT_011948.jpg_b.jpg"></div>
+				<div class="title"><a href="#">100%正宗 新疆库尔勒香梨 95元/箱15斤毛重 江浙沪包邮 新鲜 水果</a></div>
+				<div class="sale"><label>价格：</label><span>5/kg</span><label>库存：</label><span>9999</span><button>购买</button></div>
+			</div>
+		</div>
+		
+		<div class="box">
+			<div class="info">
+				<div class="pic"><img src="http://img04.taobaocdn.com/bao/uploaded/i4/T1BvJPXX4yXXad.nIW_024727.jpg_b.jpg"></div>
+				<div class="title"><a href="#">新疆特产特级大个开心果250克 自然开口颗粒饱满 满2斤包邮</a></div>
+				<div class="sale"><label>价格：</label><span>5/kg</span><label>库存：</label><span>9999</span><button>购买</button></div>
+			</div>
+		</div>
+		
+		<div class="box">
+			<div class="info">
+				<div class="pic"><img src="http://img03.taobaocdn.com/bao/uploaded/i3/T1FUViXldEXXcf9moW_024549.jpg_b.jpg"></div>
+				<div class="title"><a href="#">店庆一袋包邮晋谷香新疆和田壶瓶枣一级玉枣红枣批发山西大枣500g</a></div>
+				<div class="sale"><label>价格：</label><span>5/kg</span><label>库存：</label><span>9999</span><button>购买</button></div>
+			</div>
+		</div>
+	
+		<div class="box">
+			<div class="info">
+				<div class="pic"><img src="http://img03.taobaocdn.com/bao/uploaded/i3/T15hYMXmtXXXcklKTb_123629.jpg_b.jpg"></div>
+				<div class="title"><a href="#">新疆野生肉苁蓉 大芸250克 沙漠人参</a></div>
+				<div class="sale"><label>价格：</label><span>5/kg</span><label>库存：</label><span>9999</span><button>购买</button></div>
+			</div>
+		</div>
+		
+		<div class="box">
+			<div class="info">
+				<div class="pic"><img src="http://img03.taobaocdn.com/bao/uploaded/i7/T1xoqfXaJsXXcUtHja_120240.jpg_b.jpg"></div>
+				<div class="title"><a href="#">新疆特产 特级开口小银杏仁500g 杏核 野生饱满坚果干果 2斤包邮</a></div>
+				<div class="sale"><label>价格：</label><span>5/kg</span><label>库存：</label><span>9999</span><button>购买</button></div>
+			</div>
+		</div>
+		
+		<div class="box">
+			<div class="info">
+				<div class="pic"><img src="http://img01.taobaocdn.com/bao/uploaded/i1/T17x_ZXjFlXXaau978_071645.jpg_b.jpg"></div>
+				<div class="title"><a href="#">美国大杏核 纸皮 香脆可口 粒粒饱满 休闲零食首选</a></div>
+				<div class="sale"><label>价格：</label><span>5/kg</span><label>库存：</label><span>9999</span><button>购买</button></div>
+			</div>
+		</div>
+		
+		<div class="box">
+			<div class="info">
+				<div class="pic"><img src="http://img01.taobaocdn.com/bao/uploaded/i1/T1.gT2XjFhXXcJGKE._111803.jpg_b.jpg"></div>
+				<div class="title"><a href="#">湖南特产湘莲子\12年寸三莲2件包邮\农家自种纯天然\特级白莲450g </a></div>
+				<div class="sale"><label>价格：</label><span>5/kg</span><label>库存：</label><span>9999</span><button>购买</button></div>
+			</div>
+		</div>
+		
+		<div class="box">
+			<div class="info">
+				<div class="pic"><img src="http://img01.taobaocdn.com/bao/uploaded/i1/T1B0CzXllkXXa_ca7T_010708.jpg_b.jpg"></div>
+				<div class="title"><a href="#">新疆风特产小吃特级果干冰梅冰凉梅子休闲食品孕妇零食满200包邮 </a></div>
+				<div class="sale"><label>价格：</label><span>5/kg</span><label>库存：</label><span>9999</span><button>购买</button></div>
+			</div>
+		</div>
+		
+		<div class="box">
+			<div class="info">
+				<div class="pic"><img src="http://img01.taobaocdn.com/bao/uploaded/i1/T12dzXXbVcXXbjanLb_095349.jpg_b.jpg"></div>
+				<div class="title"><a href="#">湖南特产白鹤铁板鸡蛋煎饼早餐饼 500g称重 比Tipo面包干好吃N倍 </a></div>
+				<div class="sale"><label>价格：</label><span>5/kg</span><label>库存：</label><span>9999</span><button>购买</button></div>
+			</div>
+		</div>
+	
+	</div>
+
+</body>
+</html>
