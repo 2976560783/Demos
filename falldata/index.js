@@ -146,7 +146,7 @@ function getIndex(minH,everyH){
 function getCheck(){
 	var scrollHeight = document.documentElement.scrollHeight //可视区的高度加上滚动的高度
 	var clientHeight = document.documentElement.clientHeight //可视区的高度
-	var scrollTop = document.documentElement.scrollTop //滚动条在Y轴上的滚动距离
+	var scrollTop = document.documentElement.scrollTop || document.body.scrollTop; //滚动条在Y轴上的滚动距离
 	return scrollHeight == clientHeight + scrollTop ? true:false;
 }
 
